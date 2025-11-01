@@ -1,0 +1,11 @@
+---
+layout: default
+---
+<article class="card">
+  <h1 class="post-title">{{ page.title }}</h1>
+  <div class="post-meta">{{ page.date | date: site.minima.date_format }} · {{ page.categories | join: ", " }}</div>
+  {%- if page.description -%}<p style="color:var(--muted)">{{ page.description }}</p>{%- endif -%}
+  <div class="post-content">
+    {{ content }}
+  </div>
+</article>

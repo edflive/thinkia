@@ -1,0 +1,39 @@
+title: ThinkIA
+description: "Regards quotidiens sur l'actualité et l'impact de l'IA sur notre monde."
+lang: fr-FR
+theme: minima
+url: "" # à renseigner si vous avez un domaine custom
+baseurl: "" # laissez vide pour GitHub Pages utilisateur/org
+
+# GitHub Pages build safe plugins
+plugins:
+  - jekyll-feed
+
+# Minima options
+minima:
+  skin: auto
+  date_format: "%-d %B %Y"
+
+# Collections (for categories pages convenience)
+collections:
+  categories:
+    output: true
+    permalink: /themes/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      author: ThinkIA
+      toc: true
+  - scope:
+      path: ""
+      type: categories
+    values:
+      layout: category
+
+# Permalinks
+permalink: /:categories/:year/:month/:day/:title/

@@ -1,0 +1,14 @@
+<div class="sidebar">
+  <h3>Thèmes</h3>
+  <ul class="theme-list">
+  {%- assign cats = site.categories | sort %}
+  {%- for c in cats %}
+    {%- assign name = c[0] -%}
+    {%- assign posts = c[1] -%}
+    <li>
+      <a href="{{ '/themes/' | append: name | relative_url }}">{{ name }}</a>
+      <span class="badge">{{ posts | size }}</span>
+    </li>
+  {%- endfor %}
+  </ul>
+</div>
