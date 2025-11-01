@@ -16,14 +16,35 @@
     </header>
     <main class="page-content" aria-label="Content">
       <div class="wrapper grid">
+        <!-- ASIDE À GAUCHE -->
+        <aside class="sidebar-wrap">
+          <button class="sidebar-toggle" aria-expanded="false" aria-controls="sidebar">
+            ☰ Thèmes
+          </button>
+          {% include sidebar.html %}
+        </aside>
+
+        <!-- CONTENU -->
         <div>
           {{ content }}
         </div>
-        <aside>
-          {% include sidebar.html %}
-        </aside>
       </div>
     </main>
+
+    <!-- Script minimal pour ouvrir/fermer le panneau latéral en mobile -->
+    <script>
+      (function() {
+        const btn = document.querySelector('.sidebar-toggle');
+        const sidebar = document.getElementById('sidebar');
+        if (!btn || !sidebar) return;
+        btn.addEventListener('click', () => {
+          document.body.classList.toggle('sidebar-open');
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!expanded));
+        });
+      })();
+    </script>
+
     <footer class="site-footer">
       <div class="wrapper">
         <p>&copy; {{ "now" | date: "%Y" }} ThinkIA — Propulsé par Jekyll & GitHub Pages.</p>

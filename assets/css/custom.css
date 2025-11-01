@@ -77,11 +77,60 @@ a:hover { text-decoration: underline; }
   border: 1px solid var(--border); background: transparent; color: var(--text);
 }
 .btn:hover { border-color: var(--accent); }
+/* --- LAYOUT À 2 COLONNES --- */
 .grid {
-  display: grid; grid-template-columns: 1fr; gap: 1rem;
+  display: grid;
+  grid-template-columns: 260px 1fr; /* sidebar à gauche */
+  gap: 1.2rem;
 }
-@media (min-width: 900px) {
+
+/* Responsive : en dessous de 900px, la sidebar devient un tiroir coulissant */
+@media (max-width: 900px) {
   .grid {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr; /* une seule colonne */
   }
+  .sidebar-wrap {
+    position: relative;
+  }
+  .sidebar-toggle {
+    display: inline-block;
+    margin-bottom: .6rem;
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: .5rem .8rem;
+  }
+  .sidebar {
+    position: fixed;
+    z-index: 50;
+    top: 0; left: 0;
+    height: 100vh;
+    width: 80%;
+    max-width: 320px;
+    transform: translateX(-100%);
+    transition: transform .25s ease;
+    border-radius: 0;
+    padding-top: 4rem; /* laisser la place au bord haut */
+  }
+  body.sidebar-open .sidebar {
+    transform: translateX(0);
+  }
+}
+
+/* Desktop : garder le style existant */
+.sidebar {
+  position: sticky;
+  top: 2rem;
+}
+
+/* Liens et interactions */
+.theme-link {
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.theme-list li {
+  gap: .6rem;
 }
